@@ -7,3 +7,57 @@
 {% block heading%}
     {{page}}
     {%endblock heading%}
+
+{% block content %}
+  <div class = "container">
+    <br>
+    <form method = "post">
+    {% csrf_token %}
+    {%for message in messages%}
+{{message}}
+{%endfor%}
+<br>
+  <div class="mb-3">
+    <label>New Task</label>
+    <br>
+    <input type="text" name = "task" class="form-control" placeholder="Enter your new Task here">
+    <br>
+  <button type="submit" class="btn btn-primary">Add task</button>
+</form>
+<br> 
+<br>
+   <table class="table">
+    <thead>
+     <tr>
+      <th scope="col">Sr no.</th>
+      <th scope="col">Task</th>
+      <th scope="col">Completion Status</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+
+     </tr>
+    </thead>
+   <tbody>
+    {% for task in all_task %}
+      {% if task.is_completed %}
+        <tr class = "table-success">
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{task.task}}</td>
+          <td>Completed</td>
+          <td>edit</td>
+          <td>delete</td>
+        </tr>
+      {%else%}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{task.task}}</td>
+          <td> Not Completed</td>
+          <td>edit</td>
+          <td>delete</td>
+        </tr>  
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+    </div>
+{% endblock content%}
