@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Task
+{% endblock title %}
+
+{% block content %} 
+<div class = "container">
+    <br>
+    <form method = "post">
+    {% csrf_token %}
+    {%for message in messages%}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{message}}
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+    {%endfor%}
+<br>
+  <div class="mb-3">
+    <label>Edit Task</label>
+    <br>
+    <input type="text" name = "task" class="form-control" placeholder="{{task_obj.task}}" value = "{{task_obj.task}}">
+    <input type="hidden" name = "is_completed" value = "{{task_obj.is_completed}}">
+    <br>
+  <button type="submit" class="btn btn-primary">Edit task</button>
+</form>
+<br> 
+<br>
+</div>
+{% endblock content %}
