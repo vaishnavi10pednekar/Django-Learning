@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from firstprojectt.models import Task
 from firstprojectt.forms import TaskForm
 from django.contrib import messages
+from django.core.paginator import Paginator
 # Create your views here.
 
 def home(request):
@@ -19,6 +20,11 @@ def task(request):
             messages.success(request, "Task added successfully to the list")
             return redirect("task")
     all_task = Task.objects.all()
+    paginator = Paginator(all_task,5)
+    page = request.GET.get("page")
+
+    all_task = paginator.get_page(page)
+
     context = {
         'page' : "Task",
         "all_task" : all_task,
