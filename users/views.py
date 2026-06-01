@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 def register(request):
-    # return HttpResponse("<h1>hello</h1>")
+    return HttpResponse("<h1>hello</h1>")
     register_form = UserCreationForm()
     return render(request, "register.html", {'register_form': register_form})
 
