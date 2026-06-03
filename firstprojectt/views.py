@@ -80,10 +80,10 @@ def contactus(request):
     return render(request, "contact.html", context)
 
 def info(request):
-    all_info = Information.objects.all()
+    all_infor = Information.objects.all()
     context = {
         'page' : "Information",
-        'all_info':"all_info",
+        'all_infor': all_infor,
     }
     return render(request, "info.html", context)
 

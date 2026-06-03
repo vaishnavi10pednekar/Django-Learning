@@ -5,6 +5,7 @@
    {% endblock heading%}
 
 {% block content %}
+</div>
 
     <table class="table table-bordered table-striped">
     <thead>
@@ -14,18 +15,66 @@
             <th>Age</th>
             <th>Gender</th>
             <th>Date of Birth</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
-    {% for info in all_info %}
     <tbody>
+        {% for info in all_infor %}
         <tr>
             <td>{{info.First_Name}}</td>
             <td>{{info.SurName}}</td>
             <td>{{info.Age}}</td>
             <td>{{info.Gender}}</td>
             <td>{{info.Date_of_birth}}</td>
+            <td>Edit Info</td>
+            <td>Delete Info</td>
+
         </tr>
+        {% endfor %}
     </tbody>
-    {% endfor %}
-</table>
-    {%endblock content%}
+    </table>
+    <br>
+
+    <div class="container mt-4">
+
+    <h3>Information Form</h3>
+
+    <form>
+
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" placeholder="Enter First Name">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Surname</label>
+            <input type="text" class="form-control" placeholder="Enter Surname">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Age</label>
+            <input type="number" class="form-control" placeholder="Enter Age">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select class="form-select">
+                <option selected>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+
+    </form>
+{%endblock content%}
