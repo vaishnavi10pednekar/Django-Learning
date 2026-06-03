@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+
+{% block heading%}
+   Welcome to our {{page}} Page
+   {% endblock heading%}
+
+{% block content %}
+
+    <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+        </tr>
+    </thead>
+    {% for info in all_info %}
+    <tbody>
+        <tr>
+            <td>{{info.First_Name}}</td>
+            <td>{{info.SurName}}</td>
+            <td>{{info.Age}}</td>
+            <td>{{info.Gender}}</td>
+            <td>{{info.Date_of_birth}}</td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+    {%endblock content%}

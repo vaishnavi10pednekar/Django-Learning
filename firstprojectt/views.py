@@ -4,6 +4,7 @@ from firstprojectt.models import Task
 from firstprojectt.forms import TaskForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from firstprojectt.models import Information
 # Create your views here.
 
 def home(request):
@@ -77,3 +78,13 @@ def contactus(request):
         'page' : "Contact"
     }
     return render(request, "contact.html", context)
+
+def info(request):
+    all_info = Information.objects.all()
+    context = {
+        'page' : "Information",
+        'all_info':"all_info",
+    }
+    return render(request, "info.html", context)
+
+
