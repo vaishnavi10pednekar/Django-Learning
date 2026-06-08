@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from firstprojectt.models import Information
 from firstprojectt.forms import InformationForm
+from firstprojectt.models import Contactt
+from firstprojectt.forms import ContacttForm
 # Create your views here.
 
 def home(request):
@@ -75,8 +77,19 @@ def aboutus(request):
     return render(request, "about.html", context)
 
 def contactus(request):
+    con_info = Contactt.objects.all()
+    if request.method == "POST":
+        form_data = ContacttForm(request.POST or None)
+        if form_data.is_valid():
+            form_data.save()
+            messages.success(request, "Data added successfully")
+            return redirect("contactus")
+        messages.success(request, "Invalid Data")
+        
+
     context = {
-        'page' : "Contact"
+        'page' : "Contact",
+        'con_info' : con_info
     }
     return render(request, "contact.html", context)
 
@@ -86,7 +99,9 @@ def info(request):
         form_data = InformationForm(request.POST or None)
         if form_data.is_valid():
             form_data.save()
+            messages.success(request, "Information added successfully")
             return redirect("info")
+        messages.success(request, "Invalid Information")
     context = {
         'page' : "Information",
         'all_infor': all_infor,

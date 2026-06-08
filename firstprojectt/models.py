@@ -17,3 +17,15 @@ class Information(models.Model):
 
     def __str__(self):
         return self.First_Name
+    
+class Contactt(models.Model):
+    Address = models.CharField(max_length=500)
+    Number = models.CharField(max_length=15)
+    City = models.CharField(max_length=50)
+    Country = models.CharField(max_length=50)
+    Feedback = models.TextField(blank=True)
+    
+    def __str__(self):
+        return self.Number
+
+    
