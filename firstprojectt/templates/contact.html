@@ -3,3 +3,68 @@
 {% block heading %}
     Welcome to our {{page}} Page
     {%endblock heading%}
+
+{% block content%}
+   <div class="container mt-4">
+
+    <h3 class="mb-4">Contact Form</h3>
+
+    <form>
+
+        <div class="mb-3">
+            <label class="form-label">Contact Number</label>
+            <input
+                type="tel"
+                name="contact_number"
+                class="form-control"
+                placeholder="Enter Contact Number">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input
+                type="text"
+                name="address"
+                class="form-control"
+                placeholder="Enter Address">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">City</label>
+            <input
+                type="text"
+                name="city"
+                class="form-control"
+                placeholder="Enter City">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Country</label>
+            <input
+                type="text"
+                name="country"
+                class="form-control"
+                placeholder="Enter Country">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Feedback</label>
+            <textarea
+                name="feedback"
+                class="form-control"
+                rows="5"
+                placeholder="Write your feedback here..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+
+        <button type="reset" class="btn btn-secondary">
+            Reset
+        </button>
+
+    </form>
+
+</div>
+{% endblock content%}

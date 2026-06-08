@@ -5,6 +5,7 @@ from firstprojectt.forms import TaskForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from firstprojectt.models import Information
+from firstprojectt.forms import InformationForm
 # Create your views here.
 
 def home(request):
@@ -81,6 +82,11 @@ def contactus(request):
 
 def info(request):
     all_infor = Information.objects.all()
+    if request.method == "POST":
+        form_data = InformationForm(request.POST or None)
+        if form_data.is_valid():
+            form_data.save()
+            return redirect("info")
     context = {
         'page' : "Information",
         'all_infor': all_infor,
