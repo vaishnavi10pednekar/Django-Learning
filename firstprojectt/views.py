@@ -54,7 +54,7 @@ def edit_task(request, task_id):
     context = {
         'task_obj' : task_obj
     }
-    return render(request, "edit.html", context)
+    return render(request, "edit_task.html", context)
 
 def comp_task(request, task_id):
     task_obj = Task.objects.get(id = task_id)
@@ -93,6 +93,30 @@ def contactus(request):
     }
     return render(request, "contact.html", context)
 
+def del_con(request,data_id):
+    con_obj = Contactt.objects.get(id=data_id)
+    con_obj.delete()
+    messages.success(request, "Contact info deleted successfully")
+    return redirect("contactus")
+
+def edit_con(request,data_id):
+    con_obj = Contactt.objects.get(id=data_id)
+    
+
+    if request.method == "POST":
+        form_data = ContacttForm(request.POST or None, instance=con_obj)
+        if form_data.is_valid():
+            form_data.save()
+            messages.success(request, "Data updated successfully")
+            return redirect("contactus")
+        messages.success(request, "Invalid Updation")
+
+    context = {
+        "con_obj" : con_obj
+    }
+    return render(request,"edit_con.html", context)
+
+
 def info(request):
     all_infor = Information.objects.all()
     if request.method == "POST":
@@ -108,4 +132,25 @@ def info(request):
     }
     return render(request, "info.html", context)
 
+def del_info(request, data_id):
+    del_inf = Information.objects.get(id=data_id)
+    del_inf.delete()
+    messages.success(request, "Information deleted successfully")
+    return redirect("info")
+
+def edit_info(request,data_id):
+    edit_inf = Information.objects.get(id=data_id)
+
+    if request.method == "POST":
+        form_data = InformationForm(request.POST or None, instance = edit_inf)
+        if form_data.is_valid():
+            form_data.save()
+            messages.success(request, "Data updated successfully")
+            return redirect("info")
+        messages.success(request, "Invalid Updation")
+
+    context = {
+        "edit_inf" : edit_inf
+    }
+    return render(request,"edit_info.html", context)
 

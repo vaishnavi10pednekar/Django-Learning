@@ -11,5 +11,10 @@ urlpatterns = [
      path('task/pend_task/<task_id>', views.pend_task, name="pend_task"),
     path('aboutus/', views.aboutus, name="aboutus"),
     path('contactus/', views.contactus, name="contactus"),
+    path('del_con/<data_id>', views.del_con, name="del_con"),
+    path('edit_con/<data_id>', views.edit_con, name="edit_con"),
     path('info/', views.info, name="info"),
+    path('del_info/<data_id>', views.del_info, name="del_info"),
+    path('edit_info/<data_id>', views.edit_info, name="edit_info"),
+
 ]
