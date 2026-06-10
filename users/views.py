@@ -4,8 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 def register(request):
-    return HttpResponse("<h1>hello</h1>")
-    register_form = UserCreationForm()
-    return render(request, "register.html", {'register_form': register_form})
-
+    reg_form = UserCreationForm()
+    context = {
+        'page' : "Register",
+        'reg_form' : reg_form,
+    }
+    return render(request, "register.html",context)
 # Create your views here.

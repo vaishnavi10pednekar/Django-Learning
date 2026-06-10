@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
-{% block title%}
-    Register Here
-    {%endblock title%}
+{% block heading%}
+   Welcome to our {{page}} Page
+   {% endblock heading%}
+
+{% block content %}
+<div class="container">
+    <form method="post">
+        {{reg_form.as_p}}
+    </form>
+    <button type="submit">Register</button>
+</div>
+{% endblock content %}
+
