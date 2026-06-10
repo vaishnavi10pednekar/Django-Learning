@@ -45,14 +45,18 @@
     </table>
     <br>
     <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="?page=1">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="?page={{ all_task.previous_page_number }}">1</a></li>
-    <li class="page-item"><a class="page-link" href="?page={{ all_task.number }}">2</a></li>
-    <li class="page-item"><a class="page-link" href="?page={{ all_task.next_page_number }}">3</a></li>
-    <li class="page-item"><a class="page-link" href="?page={{ all_task.paginator.num_pages }}">Next</a></li>
-  </ul>
-</nav>
+     <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+      {% if con_info.has_previous%}
+       <li class="page-item"><a class="page-link" href="?page={{ con_info.previous_page_number }}">{{con_info.previous_page_number}}</a></li>
+      {% endif%}
+      <li class="page-item"><a class="page-link" href="?page={{ con_info.number }}">{{con_info.number}}</a></li>
+      {% if con_info.has_next%}
+       <li class="page-item"><a class="page-link" href="?page={{ con_info.next_page_number }}">{{con_info.next_page_number}}</a></li>
+      {% endif%}
+      <li class="page-item"><a class="page-link" href="?page={{ con_info.paginator.num_pages }}">Last</a></li>
+     </ul>
+    </nav>
 
 </div >
 

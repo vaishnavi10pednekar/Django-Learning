@@ -44,6 +44,20 @@
     </table>
     <br>
 
+<nav aria-label="Page navigation example">
+     <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+      {% if all_infor.has_previous%}
+       <li class="page-item"><a class="page-link" href="?page={{ all_infor.previous_page_number }}">{{all_infor.previous_page_number}}</a></li>
+      {% endif%}
+      <li class="page-item"><a class="page-link" href="?page={{ all_infor.number }}">{{all_infor.number}}</a></li>
+      {% if all_infor.has_next%}
+       <li class="page-item"><a class="page-link" href="?page={{ all_infor.next_page_number }}">{{all_infor.next_page_number}}</a></li>
+      {% endif%}
+      <li class="page-item"><a class="page-link" href="?page={{ all_infor.paginator.num_pages }}">Last</a></li>
+     </ul>
+    </nav>
+
     <div class="container mt-4">
 
     <h3>Information Form</h3>

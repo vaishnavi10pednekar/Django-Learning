@@ -7,7 +7,6 @@
 
 {% block content %}
   <div class = "container">
-    <br>
     <form method = "post">
     {% csrf_token %}
     {%for message in messages%}
@@ -16,7 +15,7 @@
        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
        </div>
     {%endfor%}
-<br>
+
   <div class="mb-3">
     <label>New Task</label>
     <br>
@@ -60,13 +59,17 @@
   </tbody>
 </table>
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
+     <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+      {% if all_task.has_previous%}
+       <li class="page-item"><a class="page-link" href="?page={{ all_task.previous_page_number }}">{{all_task.previous_page_number}}</a></li>
+      {% endif%}
+      <li class="page-item"><a class="page-link" href="?page={{ all_task.number }}">{{all_task.number}}</a></li>
+      {% if all_task.has_next%}
+       <li class="page-item"><a class="page-link" href="?page={{ all_task.next_page_number }}">{{all_task.next_page_number}}</a></li>
+      {% endif%}
+      <li class="page-item"><a class="page-link" href="?page={{ all_task.paginator.num_pages }}">Last</a></li>
+     </ul>
+    </nav>
     </div>
 {% endblock content%}

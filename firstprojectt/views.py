@@ -85,6 +85,11 @@ def contactus(request):
             messages.success(request, "Data added successfully")
             return redirect("contactus")
         messages.success(request, "Invalid Data")
+    
+    paginator = Paginator(con_info,5)
+    page = request.GET.get("page")
+
+    con_info = paginator.get_page(page)
         
 
     context = {
@@ -126,6 +131,12 @@ def info(request):
             messages.success(request, "Information added successfully")
             return redirect("info")
         messages.success(request, "Invalid Information")
+
+    paginator = Paginator(all_infor,5)
+    page = request.GET.get("page")
+
+    all_infor = paginator.get_page(page)
+
     context = {
         'page' : "Information",
         'all_infor': all_infor,
